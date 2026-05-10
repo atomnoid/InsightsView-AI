@@ -2,7 +2,6 @@ type DashboardCardProps = {
   title: string;
   value: string;
 };
-
 export default function DashboardCard({
   title,
   value,
