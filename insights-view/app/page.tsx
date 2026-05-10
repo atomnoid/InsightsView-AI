@@ -1,20 +1,63 @@
-import dashboardcard from "../components/dashboardcard";
+import DashboardCard from "../components/DashboardCard";
 
-<div className="flex gap-6">
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-black text-white flex">
 
-  <DashboardCard
-    title="Total Users"
-    value="1,284"
-  />
+      {/* SIDEBAR */}
+      <div className="w-[250px] bg-zinc-900 p-6 border-r border-zinc-800">
 
-  <DashboardCard
-    title="Revenue"
-    value="$12K"
-  />
+        <h1 className="text-2xl font-bold mb-10">
+          Insights View
+        </h1>
 
-  <DashboardCard
-    title="AI Reports"
-    value="342"
-  />
+        <div className="space-y-4">
+          <p className="text-zinc-300 cursor-pointer">
+            Dashboard
+          </p>
 
-</div>
+          <p className="text-zinc-300 cursor-pointer">
+            Analytics
+          </p>
+
+          <p className="text-zinc-300 cursor-pointer">
+            Reports
+          </p>
+
+          <p className="text-zinc-300 cursor-pointer">
+            Settings
+          </p>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="flex-1 p-10">
+
+        <h1 className="text-4xl font-bold mb-8">
+          Dashboard
+        </h1>
+
+        <div className="flex gap-6">
+
+          <DashboardCard
+            title="Total Users"
+            value="1,284"
+          />
+
+          <DashboardCard
+            title="Revenue"
+            value="$12K"
+          />
+
+          <DashboardCard
+            title="AI Reports"
+            value="342"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
