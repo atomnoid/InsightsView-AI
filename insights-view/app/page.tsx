@@ -28,6 +28,12 @@ export default function Home() {
   >
     Toggle Message
   </button>;
+  {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    showMessage && (
+      <p className="text-green-400 mt-4 text-xl">AI Dashboard Active 🚀</p>
+    );
+  }
   return (
     <div className="min-h-screen bg-black text-white flex">
       {/* SIDEBAR */}
