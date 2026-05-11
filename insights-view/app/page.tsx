@@ -1,3 +1,4 @@
+import { useState } from "react";
 import DashboardCard from "../components/DashboardCard";
 
 const stats = [
@@ -18,6 +19,7 @@ const stats = [
 ];
 
 export default function Home() {
+  const [count, setCount] = useState(0);
   return (
     <div className="min-h-screen bg-black text-white flex">
       {/* SIDEBAR */}
@@ -47,6 +49,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
