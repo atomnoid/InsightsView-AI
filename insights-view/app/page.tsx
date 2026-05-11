@@ -21,6 +21,13 @@ const stats = [
 
 export default function Home() {
   const [count, setCount] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
+  <button
+    onClick={() => setShowMessage(!showMessage)}
+    className="bg-zinc-800 px-6 py-3 rounded-xl mt-6"
+  >
+    Toggle Message
+  </button>;
   return (
     <div className="min-h-screen bg-black text-white flex">
       {/* SIDEBAR */}
