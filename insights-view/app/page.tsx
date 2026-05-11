@@ -42,14 +42,26 @@ export default function Home() {
         <h1 className="text-4xl font-bold mb-8">Dashboard</h1>
 
         <div className="flex gap-6">
-          <div className="flex gap-6">
-            {stats.map((item) => (
-              <DashboardCard key={item.title} title={item.title} value={item.value} />
-            ))}
-          </div>
+          {stats.map((item) => (
+            <DashboardCard
+              key={item.title}
+              title={item.title}
+              value={item.value}
+            />
+          ))}
+        </div>
+
+        <div className="mt-10">
+          <p className="text-3xl font-bold mb-4">Count: {count}</p>
+
+          <button
+            onClick={() => setCount(count + 1)}
+            className="bg-white text-black px-6 py-3 rounded-xl font-semibold"
+          >
+            Increase
+          </button>
         </div>
       </div>
-      
     </div>
   );
 }
