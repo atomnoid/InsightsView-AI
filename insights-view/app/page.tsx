@@ -25,7 +25,7 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
   const [activeTab, setActiveTab] = useState("Dashboard");
-
+  const [prompt, setprompt] = useState("");
   // This button is meant to flip the message toggle state.
   <button
     onClick={() => setShowMessage(!showMessage)}
