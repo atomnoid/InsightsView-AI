@@ -46,6 +46,29 @@ export default function Home() {
       {/* SIDEBAR */}
       <div className="w-[250px] bg-zinc-900 p-6 border-r border-zinc-800">
         <h1 className="text-2xl font-bold mb-10">Insights View</h1>
+        {activeTab === "Dashboard" && (
+          <p className="text-zinc-400 mb-8">
+            Overview of platform activity and metrics.
+          </p>
+        )}
+
+        {activeTab === "Analytics" && (
+          <p className="text-zinc-400 mb-8">
+            AI-generated analytics and user insights.
+          </p>
+        )}
+
+        {activeTab === "Reports" && (
+          <p className="text-zinc-400 mb-8">
+            Exported reports and business summaries.
+          </p>
+        )}
+
+        {activeTab === "Settings" && (
+          <p className="text-zinc-400 mb-8">
+            Manage platform preferences and account settings.
+          </p>
+        )}
 
         {/* Navigation links for each dashboard section. */}
         <div className="space-y-4">
