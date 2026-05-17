@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
-        <h1 className="text-4xl font-bold mb-8">Dashboard</h1>
+        <h1 className="text-4xl font-bold mb-8">{activeTab}</h1>
 
         <div className="flex gap-6">
           {stats.map((item) => (
