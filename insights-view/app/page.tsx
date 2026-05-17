@@ -22,6 +22,7 @@ const stats = [
 export default function Home() {
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+  const [activeTab, setActiveTab] = useState("Dashboard");
   <button
     onClick={() => setShowMessage(!showMessage)}
     className="bg-zinc-800 px-6 py-3 rounded-xl mt-6"
@@ -40,15 +41,25 @@ export default function Home() {
       <div className="w-[250px] bg-zinc-900 p-6 border-r border-zinc-800">
         <h1 className="text-2xl font-bold mb-10">Insights View</h1>
 
-        <div className="space-y-4">
-          <p className="text-zinc-300 cursor-pointer">Dashboard</p>
+       <div className="space-y-4">
 
-          <p className="text-zinc-300 cursor-pointer">Analytics</p>
+  {["Dashboard", "Analytics", "Reports", "Settings"].map((tab) => (
 
-          <p className="text-zinc-300 cursor-pointer">Reports</p>
+    <p
+      key={tab}
+      onClick={() => setActiveTab(tab)}
+      className={`cursor-pointer p-3 rounded-xl transition-all ${
+        activeTab === tab
+          ? "bg-white text-black font-semibold"
+          : "text-zinc-300 hover:bg-zinc-800"
+      }`}
+    >
+      {tab}
+    </p>
 
-          <p className="text-zinc-300 cursor-pointer">Settings</p>
-        </div>
+  ))}
+
+</div>
       </div>
 
       {/* MAIN CONTENT */}
