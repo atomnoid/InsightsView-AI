@@ -25,7 +25,7 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const [prompt, setprompt] = useState("");
+  const [prompt, setPrompt] = useState("");
   // This button is meant to flip the message toggle state.
   <button
     onClick={() => setShowMessage(!showMessage)}
@@ -49,24 +49,20 @@ export default function Home() {
 
         {/* Navigation links for each dashboard section. */}
         <div className="space-y-4">
-
-  {["Dashboard", "Analytics", "Reports", "Settings"].map((tab) => (
-
-    <p
-      key={tab}
-      onClick={() => setActiveTab(tab)}
-      className={`cursor-pointer p-3 rounded-xl transition-all ${
-        activeTab === tab
-          ? "bg-white text-black font-semibold"
-          : "text-zinc-300 hover:bg-zinc-800"
-      }`}
-    >
-      {tab}
-    </p>
-
-  ))}
-
-</div>
+          {["Dashboard", "Analytics", "Reports", "Settings"].map((tab) => (
+            <p
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`cursor-pointer p-3 rounded-xl transition-all ${
+                activeTab === tab
+                  ? "bg-white text-black font-semibold"
+                  : "text-zinc-300 hover:bg-zinc-800"
+              }`}
+            >
+              {tab}
+            </p>
+          ))}
+        </div>
       </div>
 
       {/* MAIN CONTENT */}
@@ -94,6 +90,17 @@ export default function Home() {
             Increase
           </button>
         </div>
+      </div>
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4">AI Prompt</h2>
+
+        <input
+          type="text"
+          placeholder="Enter your prompt..."
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          className="w-full max-w-xl bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 outline-none"
+        />
       </div>
     </div>
   );
