@@ -25,6 +25,95 @@ export default function Home() {
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
   const [activeTab, setActiveTab] = useState("Dashboard");
+  const dashboardSections = {
+    Dashboard: {
+      title: "AI Dashboard",
+      description: "Monitor platform insights and activity",
+
+      cards: [
+        {
+          title: "Users",
+          value: "12,450",
+        },
+
+        {
+          title: "Revenue",
+          value: "$8,420",
+        },
+
+        {
+          title: "AI Reports",
+          value: "1,240",
+        },
+      ],
+    },
+
+    Analytics: {
+      title: "Analytics Center",
+      description: "Track engagement and growth metrics",
+
+      cards: [
+        {
+          title: "Engagement",
+          value: "87%",
+        },
+
+        {
+          title: "Conversion",
+          value: "12.4%",
+        },
+
+        {
+          title: "Retention",
+          value: "74%",
+        },
+      ],
+    },
+
+    "AI Insights": {
+      title: "AI Insights",
+      description: "Analyze AI-generated platform intelligence",
+
+      cards: [
+        {
+          title: "Prompts",
+          value: "8,240",
+        },
+
+        {
+          title: "Tokens Used",
+          value: "1.2M",
+        },
+
+        {
+          title: "Accuracy",
+          value: "92%",
+        },
+      ],
+    },
+
+    Settings: {
+      title: "Platform Settings",
+      description: "Manage dashboard preferences",
+
+      cards: [
+        {
+          title: "Theme",
+          value: "Dark Mode",
+        },
+
+        {
+          title: "Users",
+          value: "Admin",
+        },
+
+        {
+          title: "Plan",
+          value: "Pro",
+        },
+      ],
+    },
+  };
   const [prompt, setPrompt] = useState("");
   // This button is meant to flip the message toggle state.
   <button
