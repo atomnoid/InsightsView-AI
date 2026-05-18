@@ -24,7 +24,9 @@ export default function Home() {
   // Track a simple counter and which sidebar tab is active.
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
-  const [activeTab, setActiveTab] = useState("Dashboard");
+  const [activeTab, setActiveTab] = useState<
+    "Dashboard" | "Analytics" | "AI Insights" | "Reports" | "Settings"
+  >("Dashboard");
   const dashboardSections = {
     Dashboard: {
       title: "AI Dashboard",
@@ -92,6 +94,28 @@ export default function Home() {
       ],
     },
 
+    Reports: {
+      title: "Reports Center",
+      description: "Exported reports and business summaries",
+
+      cards: [
+        {
+          title: "Monthly Report",
+          value: "42",
+        },
+
+        {
+          title: "Exported",
+          value: "18",
+        },
+
+        {
+          title: "Summary",
+          value: "Active",
+        },
+      ],
+    },
+
     Settings: {
       title: "Platform Settings",
       description: "Manage dashboard preferences",
@@ -115,6 +139,7 @@ export default function Home() {
     },
   };
   const [prompt, setPrompt] = useState("");
+  const tabs = ["Dashboard", "Analytics", "Reports", "Settings"] as const;
   // This button is meant to flip the message toggle state.
   <button
     onClick={() => setShowMessage(!showMessage)}
@@ -134,7 +159,9 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white flex">
       {/* SIDEBAR */}
       <div className="w-[250px] bg-zinc-900 p-6 border-r border-zinc-800">
-        <h1 className="text-2xl font-bold mb-10">Insights View</h1>
+        <h1 className="text-3xl font-bold">
+          {dashboardSections[activeTab].title}
+        </h1>
         {activeTab === "Dashboard" && (
           <p className="text-zinc-400 mb-8">
             Overview of platform activity and metrics.
@@ -179,7 +206,9 @@ export default function Home() {
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
-        <h1 className="text-4xl font-bold mb-8">{activeTab}</h1>
+        <h1 className="text-3xl font-bold">
+          {dashboardSections[activeTab].title}
+        </h1>
 
         <div className="flex gap-6">
           {stats.map((item) => (
