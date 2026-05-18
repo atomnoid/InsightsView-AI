@@ -1,14 +1,29 @@
 "use client";
+
 import { useState } from "react";
 import DashboardCard from "../components/DashboardCard";
 
 export default function Home() {
-  // Track a simple counter and which sidebar tab is active.
+  // Main dashboard state
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+  const [prompt, setPrompt] = useState("");
+
+  // Active sidebar tab state
   const [activeTab, setActiveTab] = useState<
     "Dashboard" | "Analytics" | "AI Insights" | "Reports" | "Settings"
   >("Dashboard");
+
+  // Sidebar tabs
+  const tabs = [
+    "Dashboard",
+    "Analytics",
+    "AI Insights",
+    "Reports",
+    "Settings",
+  ] as const;
+
+  // Dynamic dashboard architecture
   const dashboardSections = {
     Dashboard: {
       title: "AI Dashboard",
@@ -120,23 +135,22 @@ export default function Home() {
       ],
     },
   };
-  const [prompt, setPrompt] = useState("");
-  const tabs = ["Dashboard", "Analytics", "Reports", "Settings"] as const;
-  // This button is meant to flip the message toggle state.
 
   return (
     <div className="min-h-screen bg-black text-white flex">
       {/* SIDEBAR */}
       <div className="w-[250px] bg-zinc-900 p-6 border-r border-zinc-800">
         <h1 className="text-3xl font-bold">
-          {dashboardSections[activeTab].title}
+          InsightsView AI
         </h1>
-        <p className="text-zinc-400 mb-8 mt-2">
-          {dashboardSections[activeTab].description}
+
+        <p className="text-zinc-400 mt-2 mb-8">
+          Modern AI analytics dashboard
         </p>
-        {/* Navigation links for each dashboard section. */}
+
+        {/* Navigation */}
         <div className="space-y-4">
-          {["Dashboard", "Analytics", "Reports", "Settings"].map((tab) => (
+          {tabs.map((tab) => (
             <p
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -154,43 +168,74 @@ export default function Home() {
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
-        <h1 className="text-3xl font-bold">
+        {/* Dynamic Heading */}
+        <h1 className="text-4xl font-bold">
           {dashboardSections[activeTab].title}
         </h1>
 
-        <div className="flex gap-6">
-          {stats.map((item) => (
+        {/* Dynamic Description */}
+        <p className="text-zinc-400 mt-3">
+          {dashboardSections[activeTab].description}
+        </p>
+
+        {/* Dynamic Dashboard Cards */}
+        <div className="grid grid-cols-3 gap-6 mt-8">
+          {dashboardSections[activeTab].cards.map((card) => (
             <DashboardCard
-              key={item.title}
-              title={item.title}
-              value={item.value}
+              key={card.title}
+              title={card.title}
+              value={card.value}
             />
           ))}
         </div>
 
-        <div className="mt-10">
-          <p className="text-3xl font-bold mb-4">Count: {count}</p>
+        {/* Counter Section */}
+        <div className="mt-12">
+          <p className="text-3xl font-bold mb-4">
+            Count: {count}
+          </p>
 
-          {/* Simple counter button for a bit of interactivity. */}
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-white text-black px-6 py-3 rounded-xl font-semibold"
-          >
-            Increase
-          </button>
+          <div className="flex items-center">
+            <button
+              onClick={() => setCount(count + 1)}
+              className="bg-white text-black px-6 py-3 rounded-xl font-semibold"
+            >
+              Increase
+            </button>
+
+            <button
+              onClick={() => setShowMessage(!showMessage)}
+              className="bg-zinc-800 px-6 py-3 rounded-xl ml-4"
+            >
+              Toggle Message
+            </button>
+          </div>
+
+          {showMessage && (
+            <p className="text-green-400 mt-4 text-xl">
+              AI Dashboard Active 🚀
+            </p>
+          )}
         </div>
-      </div>
-      <div className="mt-10">
-        <h2 className="text-2xl font-bold mb-4">AI Prompt</h2>
 
-        <input
-          type="text"
-          placeholder="Enter your prompt..."
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          className="w-full max-w-xl bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 outline-none"
-        />
-        <p className="mt-4 text-zinc-400">Current Prompt: {prompt}</p>
+        {/* AI Prompt Input */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-4">
+            AI Prompt
+          </h2>
+
+          <input
+            type="text"
+            placeholder="Enter your prompt..."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            className="w-full max-w-2xl bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-white transition-all"
+          />
+
+          <p className="mt-4 text-zinc-400">
+            Current Prompt: {prompt}
+          </p>
+        </div>
       </div>
     </div>
   );
