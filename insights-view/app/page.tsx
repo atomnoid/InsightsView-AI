@@ -2,23 +2,6 @@
 import { useState } from "react";
 import DashboardCard from "../components/DashboardCard";
 
-// Basic dashboard values shown in cards on the main page.
-const stats = [
-  {
-    title: "Total Users",
-    value: "1,284",
-  },
-
-  {
-    title: "Revenue",
-    value: "$12K",
-  },
-
-  {
-    title: "AI Reports",
-    value: "342",
-  },
-];
 
 export default function Home() {
   // Track a simple counter and which sidebar tab is active.
