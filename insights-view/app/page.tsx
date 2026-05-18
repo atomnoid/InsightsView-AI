@@ -2,7 +2,6 @@
 import { useState } from "react";
 import DashboardCard from "../components/DashboardCard";
 
-
 export default function Home() {
   // Track a simple counter and which sidebar tab is active.
   const [count, setCount] = useState(0);
@@ -124,19 +123,6 @@ export default function Home() {
   const [prompt, setPrompt] = useState("");
   const tabs = ["Dashboard", "Analytics", "Reports", "Settings"] as const;
   // This button is meant to flip the message toggle state.
-  <button
-    onClick={() => setShowMessage(!showMessage)}
-    className="bg-zinc-800 px-6 py-3 rounded-xl mt-6"
-  >
-    Toggle Message
-  </button>;
-
-  {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    showMessage && (
-      <p className="text-green-400 mt-4 text-xl">AI Dashboard Active 🚀</p>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-black text-white flex">
@@ -145,30 +131,9 @@ export default function Home() {
         <h1 className="text-3xl font-bold">
           {dashboardSections[activeTab].title}
         </h1>
-        {activeTab === "Dashboard" && (
-          <p className="text-zinc-400 mb-8">
-            Overview of platform activity and metrics.
-          </p>
-        )}
-
-        {activeTab === "Analytics" && (
-          <p className="text-zinc-400 mb-8">
-            AI-generated analytics and user insights.
-          </p>
-        )}
-
-        {activeTab === "Reports" && (
-          <p className="text-zinc-400 mb-8">
-            Exported reports and business summaries.
-          </p>
-        )}
-
-        {activeTab === "Settings" && (
-          <p className="text-zinc-400 mb-8">
-            Manage platform preferences and account settings.
-          </p>
-        )}
-
+        <p className="text-zinc-400 mb-8 mt-2">
+          {dashboardSections[activeTab].description}
+        </p>
         {/* Navigation links for each dashboard section. */}
         <div className="space-y-4">
           {["Dashboard", "Analytics", "Reports", "Settings"].map((tab) => (
