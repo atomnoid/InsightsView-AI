@@ -1,3 +1,8 @@
+import Sidebar from "../components/Sidebar";
+import HeaderSection from "../components/HeaderSection";
+import StatsSection from "../components/StatsSection";
+import PromptBox from "../components/PromptBox";
+
 "use client";
 
 import { useState } from "react";
