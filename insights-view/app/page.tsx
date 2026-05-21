@@ -158,15 +158,7 @@ export default function Home() {
         </p>
 
         {/* Dynamic Dashboard Cards */}
-        <div className="grid grid-cols-3 gap-6 mt-8">
-          {dashboardSections[activeTab].cards.map((card) => (
-            <DashboardCard
-              key={card.title}
-              title={card.title}
-              value={card.value}
-            />
-          ))}
-        </div>
+        <StatsSection cards={dashboardSections[activeTab].cards} />
 
         {/* Counter Section */}
         <div className="mt-12">
