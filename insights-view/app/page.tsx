@@ -10,6 +10,9 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   // Main dashboard state
+  useEffect(() => {
+    console.log("Dashboard rendered");
+  }, []);
   const [count, setCount] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
   const [prompt, setPrompt] = useState("");
@@ -143,11 +146,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      <Sidebar
-        tabs={tabs}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
+      <Sidebar tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
@@ -156,15 +155,11 @@ export default function Home() {
           description={dashboardSections[activeTab].description}
         />
 
-        <StatsSection
-          cards={dashboardSections[activeTab].cards}
-        />
+        <StatsSection cards={dashboardSections[activeTab].cards} />
 
         {/* Counter Section */}
         <div className="mt-12">
-          <p className="text-3xl font-bold mb-4">
-            Count: {count}
-          </p>
+          <p className="text-3xl font-bold mb-4">Count: {count}</p>
 
           <div className="flex items-center">
             <button
@@ -189,10 +184,7 @@ export default function Home() {
           )}
         </div>
 
-        <PromptBox
-          prompt={prompt}
-          setPrompt={setPrompt}
-        />
+        <PromptBox prompt={prompt} setPrompt={setPrompt} />
       </div>
     </div>
   );
