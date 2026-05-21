@@ -1,11 +1,11 @@
 "use client";
 
+import { useState } from "react";
+
 import Sidebar from "../components/Sidebar";
 import HeaderSection from "../components/HeaderSection";
 import StatsSection from "../components/StatsSection";
 import PromptBox from "../components/PromptBox";
-
-import { useState } from "react";
 
 export default function Home() {
   // Main dashboard state
@@ -142,7 +142,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      <Sidebar tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Sidebar
+        tabs={tabs}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
@@ -150,12 +154,16 @@ export default function Home() {
           title={dashboardSections[activeTab].title}
           description={dashboardSections[activeTab].description}
         />
-        {/* Dynamic Dashboard Cards */}
-        <StatsSection cards={dashboardSections[activeTab].cards} />
+
+        <StatsSection
+          cards={dashboardSections[activeTab].cards}
+        />
 
         {/* Counter Section */}
         <div className="mt-12">
-          <p className="text-3xl font-bold mb-4">Count: {count}</p>
+          <p className="text-3xl font-bold mb-4">
+            Count: {count}
+          </p>
 
           <div className="flex items-center">
             <button
@@ -180,7 +188,10 @@ export default function Home() {
           )}
         </div>
 
-        <PromptBox prompt={prompt} setPrompt={setPrompt} />
+        <PromptBox
+          prompt={prompt}
+          setPrompt={setPrompt}
+        />
       </div>
     </div>
   );
