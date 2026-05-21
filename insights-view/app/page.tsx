@@ -14,13 +14,25 @@ export default function Home() {
     console.log("Dashboard rendered");
   }, []);
   const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.log("InsightsView AI Loaded");
+  }, []);
   const [showMessage, setShowMessage] = useState(false);
+  useEffect(() => {
+    console.log("InsightsView AI Loaded");
+  }, []);
   const [prompt, setPrompt] = useState("");
+  useEffect(() => {
+    console.log("InsightsView AI Loaded");
+  }, []);
 
   // Active sidebar tab state
   const [activeTab, setActiveTab] = useState<
     "Dashboard" | "Analytics" | "AI Insights" | "Reports" | "Settings"
   >("Dashboard");
+  useEffect(() => {
+    console.log("InsightsView AI Loaded");
+  }, []);
 
   // Sidebar tabs
   const tabs = [
