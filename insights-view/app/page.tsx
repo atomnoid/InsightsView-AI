@@ -150,12 +150,6 @@ export default function Home() {
           title={dashboardSections[activeTab].title}
           description={dashboardSections[activeTab].description}
         />
-
-        {/* Dynamic Description */}
-        <p className="text-zinc-400 mt-3">
-          {dashboardSections[activeTab].description}
-        </p>
-
         {/* Dynamic Dashboard Cards */}
         <StatsSection cards={dashboardSections[activeTab].cards} />
 
