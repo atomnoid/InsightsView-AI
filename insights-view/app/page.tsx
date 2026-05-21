@@ -3,7 +3,7 @@ import HeaderSection from "../components/HeaderSection";
 import StatsSection from "../components/StatsSection";
 import PromptBox from "../components/PromptBox";
 
-"use client";
+("use client");
 
 import { useState } from "react";
 import DashboardCard from "../components/DashboardCard";
@@ -143,40 +143,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      {/* SIDEBAR */}
-      <div className="w-[250px] bg-zinc-900 p-6 border-r border-zinc-800">
-        <h1 className="text-3xl font-bold">
-          InsightsView AI
-        </h1>
-
-        <p className="text-zinc-400 mt-2 mb-8">
-          Modern AI analytics dashboard
-        </p>
-
-        {/* Navigation */}
-        <div className="space-y-4">
-          {tabs.map((tab) => (
-            <p
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`cursor-pointer p-3 rounded-xl transition-all ${
-                activeTab === tab
-                  ? "bg-white text-black font-semibold"
-                  : "text-zinc-300 hover:bg-zinc-800"
-              }`}
-            >
-              {tab}
-            </p>
-          ))}
-        </div>
-      </div>
+      <Sidebar tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
-        {/* Dynamic Heading */}
-        <h1 className="text-4xl font-bold">
-          {dashboardSections[activeTab].title}
-        </h1>
+        <HeaderSection
+          title={dashboardSections[activeTab].title}
+          description={dashboardSections[activeTab].description}
+        />
 
         {/* Dynamic Description */}
         <p className="text-zinc-400 mt-3">
@@ -196,9 +170,7 @@ export default function Home() {
 
         {/* Counter Section */}
         <div className="mt-12">
-          <p className="text-3xl font-bold mb-4">
-            Count: {count}
-          </p>
+          <p className="text-3xl font-bold mb-4">Count: {count}</p>
 
           <div className="flex items-center">
             <button
@@ -225,9 +197,7 @@ export default function Home() {
 
         {/* AI Prompt Input */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-4">
-            AI Prompt
-          </h2>
+          <h2 className="text-2xl font-bold mb-4">AI Prompt</h2>
 
           <input
             type="text"
@@ -237,9 +207,7 @@ export default function Home() {
             className="w-full max-w-2xl bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-white transition-all"
           />
 
-          <p className="mt-4 text-zinc-400">
-            Current Prompt: {prompt}
-          </p>
+          <p className="mt-4 text-zinc-400">Current Prompt: {prompt}</p>
         </div>
       </div>
     </div>
