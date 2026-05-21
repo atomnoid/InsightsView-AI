@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar";
 import HeaderSection from "../components/HeaderSection";
 import StatsSection from "../components/StatsSection";
 import PromptBox from "../components/PromptBox";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   // Main dashboard state
