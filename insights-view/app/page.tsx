@@ -10,45 +10,45 @@ export default function Home() {
   // Main dashboard state
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-      setPosts(data);
-    });
+        setPosts(data);
+      });
   }, []);
   const [count, setCount] = useState(0);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-      setPosts(data);
-    });
+        setPosts(data);
+      });
   }, []);
   const [showMessage, setShowMessage] = useState(false);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-      setPosts(data);
-    });
+        setPosts(data);
+      });
   }, []);
   const [prompt, setPrompt] = useState("");
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-      setPosts(data);
-    });
+        setPosts(data);
+      });
   }, []);
 
   // Active sidebar tab state
@@ -57,13 +57,14 @@ export default function Home() {
   >("Dashboard");
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log("InsightsView AI Loaded");fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+    console.log("InsightsView AI Loaded");
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-      setPosts(data);
-    });
+        setPosts(data);
+      });
   }, []);
 
   // Sidebar tabs
@@ -226,6 +227,23 @@ export default function Home() {
               AI Dashboard Active 🚀
             </p>
           )}
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-6">Latest API Posts</h2>
+
+          <div className="space-y-4">
+            {posts.slice(0, 5).map((post: any) => (
+              <div
+                key={post.id}
+                className="bg-zinc-900 p-5 rounded-xl border border-zinc-800"
+              >
+                <h3 className="text-xl font-semibold">{post.title}</h3>
+
+                <p className="text-zinc-400 mt-2">{post.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <PromptBox prompt={prompt} setPrompt={setPrompt} />
