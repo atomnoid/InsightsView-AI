@@ -12,14 +12,17 @@ export default function Home() {
     console.log("Dashboard rendered");
   }, []);
   const [count, setCount] = useState(0);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     console.log("InsightsView AI Loaded");
   }, []);
   const [showMessage, setShowMessage] = useState(false);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     console.log("InsightsView AI Loaded");
   }, []);
   const [prompt, setPrompt] = useState("");
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     console.log("InsightsView AI Loaded");
   }, []);
@@ -28,6 +31,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<
     "Dashboard" | "Analytics" | "AI Insights" | "Reports" | "Settings"
   >("Dashboard");
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     console.log("InsightsView AI Loaded");
   }, []);
