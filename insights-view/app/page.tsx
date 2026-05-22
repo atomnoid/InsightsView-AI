@@ -9,22 +9,46 @@ import { useState, useEffect } from "react";
 export default function Home() {
   // Main dashboard state
   useEffect(() => {
-    console.log("Dashboard rendered");
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      setPosts(data);
+    });
   }, []);
   const [count, setCount] = useState(0);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log("InsightsView AI Loaded");
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      setPosts(data);
+    });
   }, []);
   const [showMessage, setShowMessage] = useState(false);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log("InsightsView AI Loaded");
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      setPosts(data);
+    });
   }, []);
   const [prompt, setPrompt] = useState("");
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log("InsightsView AI Loaded");
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      setPosts(data);
+    });
   }, []);
 
   // Active sidebar tab state
@@ -33,7 +57,13 @@ export default function Home() {
   >("Dashboard");
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log("InsightsView AI Loaded");
+    console.log("InsightsView AI Loaded");fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      setPosts(data);
+    });
   }, []);
 
   // Sidebar tabs
