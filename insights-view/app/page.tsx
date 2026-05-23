@@ -1,63 +1,30 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 import Sidebar from "../components/Sidebar";
 import HeaderSection from "../components/HeaderSection";
 import StatsSection from "../components/StatsSection";
 import PromptBox from "../components/PromptBox";
-import { useState, useEffect } from "react";
 
 export default function Home() {
   // Main dashboard state
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-
-        setPosts(data);
-      });
-  }, []);
   const [count, setCount] = useState(0);
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-
-        setPosts(data);
-      });
-  }, []);
   const [showMessage, setShowMessage] = useState(false);
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-
-        setPosts(data);
-      });
-  }, []);
   const [prompt, setPrompt] = useState("");
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
 
-        setPosts(data);
-      });
-  }, []);
+  // API posts state
+  const [posts, setPosts] = useState<any[]>([]);
 
-  // Active sidebar tab state
+  // Active sidebar tab
   const [activeTab, setActiveTab] = useState<
     "Dashboard" | "Analytics" | "AI Insights" | "Reports" | "Settings"
   >("Dashboard");
-  const [posts, setPosts] = useState([]);
+
+  // API Fetching
   useEffect(() => {
     console.log("InsightsView AI Loaded");
+
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((data) => {
@@ -76,7 +43,7 @@ export default function Home() {
     "Settings",
   ] as const;
 
-  // Dynamic dashboard architecture
+  // Dashboard architecture
   const dashboardSections = {
     Dashboard: {
       title: "AI Dashboard",
@@ -191,7 +158,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      <Sidebar tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Sidebar
+        tabs={tabs}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
@@ -200,11 +171,15 @@ export default function Home() {
           description={dashboardSections[activeTab].description}
         />
 
-        <StatsSection cards={dashboardSections[activeTab].cards} />
+        <StatsSection
+          cards={dashboardSections[activeTab].cards}
+        />
 
         {/* Counter Section */}
         <div className="mt-12">
-          <p className="text-3xl font-bold mb-4">Count: {count}</p>
+          <p className="text-3xl font-bold mb-4">
+            Count: {count}
+          </p>
 
           <div className="flex items-center">
             <button
@@ -229,8 +204,11 @@ export default function Home() {
           )}
         </div>
 
+        {/* API POSTS */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">Latest API Posts</h2>
+          <h2 className="text-2xl font-bold mb-6">
+            Latest API Posts
+          </h2>
 
           <div className="space-y-4">
             {posts.slice(0, 5).map((post: any) => (
@@ -238,15 +216,22 @@ export default function Home() {
                 key={post.id}
                 className="bg-zinc-900 p-5 rounded-xl border border-zinc-800"
               >
-                <h3 className="text-xl font-semibold">{post.title}</h3>
+                <h3 className="text-xl font-semibold">
+                  {post.title}
+                </h3>
 
-                <p className="text-zinc-400 mt-2">{post.body}</p>
+                <p className="text-zinc-400 mt-2">
+                  {post.body}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <PromptBox prompt={prompt} setPrompt={setPrompt} />
+        <PromptBox
+          prompt={prompt}
+          setPrompt={setPrompt}
+        />
       </div>
     </div>
   );
