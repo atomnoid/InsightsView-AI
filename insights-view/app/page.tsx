@@ -16,6 +16,9 @@ export default function Home() {
   // API posts state
   const [posts, setPosts] = useState<any[]>([]);
 
+  //loading state
+  const [isLoading, setIsLoading] = useState(true);
+
   // Active sidebar tab
   const [activeTab, setActiveTab] = useState<
     "Dashboard" | "Analytics" | "AI Insights" | "Reports" | "Settings"
@@ -31,6 +34,8 @@ export default function Home() {
         console.log(data);
 
         setPosts(data);
+
+        setIsLoading(false);
       });
   }, []);
 
@@ -158,11 +163,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      <Sidebar
-        tabs={tabs}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
+      <Sidebar tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* MAIN CONTENT */}
       <div className="flex-1 p-10">
@@ -171,15 +172,11 @@ export default function Home() {
           description={dashboardSections[activeTab].description}
         />
 
-        <StatsSection
-          cards={dashboardSections[activeTab].cards}
-        />
+        <StatsSection cards={dashboardSections[activeTab].cards} />
 
         {/* Counter Section */}
         <div className="mt-12">
-          <p className="text-3xl font-bold mb-4">
-            Count: {count}
-          </p>
+          <p className="text-3xl font-bold mb-4">Count: {count}</p>
 
           <div className="flex items-center">
             <button
@@ -206,9 +203,7 @@ export default function Home() {
 
         {/* API POSTS */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">
-            Latest API Posts
-          </h2>
+          <h2 className="text-2xl font-bold mb-6">Latest API Posts</h2>
 
           <div className="space-y-4">
             {posts.slice(0, 5).map((post: any) => (
@@ -216,22 +211,15 @@ export default function Home() {
                 key={post.id}
                 className="bg-zinc-900 p-5 rounded-xl border border-zinc-800"
               >
-                <h3 className="text-xl font-semibold">
-                  {post.title}
-                </h3>
+                <h3 className="text-xl font-semibold">{post.title}</h3>
 
-                <p className="text-zinc-400 mt-2">
-                  {post.body}
-                </p>
+                <p className="text-zinc-400 mt-2">{post.body}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <PromptBox
-          prompt={prompt}
-          setPrompt={setPrompt}
-        />
+        <PromptBox prompt={prompt} setPrompt={setPrompt} />
       </div>
     </div>
   );
