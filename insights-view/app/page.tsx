@@ -30,11 +30,26 @@ export default function Home() {
     console.log("InsightsView AI Loaded");
 
     fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch AI insights");
+        }
+
+        return response.json();
+      })
+
       .then((data) => {
         console.log(data);
 
         setPosts(data);
+
+        setIsLoading(false);
+      })
+
+      .catch((error) => {
+        console.log(error);
+
+        setError("Something went wrong while loading data.");
 
         setIsLoading(false);
       });
