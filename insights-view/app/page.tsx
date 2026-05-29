@@ -18,6 +18,7 @@ export default function Home() {
 
   //loading state
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   // Active sidebar tab
   const [activeTab, setActiveTab] = useState<
