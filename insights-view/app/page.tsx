@@ -223,6 +223,8 @@ export default function Home() {
 
           {isLoading ? (
             <p className="text-zinc-400 text-lg">Loading AI insights...</p>
+          ) : error ? (
+            <p className="text-red-400 text-lg">{error}</p>
           ) : (
             <div className="space-y-4">
               {posts.slice(0, 5).map((post: any) => (
