@@ -27,32 +27,33 @@ export default function Home() {
 
   // API Fetching
   useEffect(() => {
-    console.log("InsightsView AI Loaded");
+    const fetchPosts = async () => {
+      try {
+        console.log("InsightsView AI Loaded");
 
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts",
+        );
+
         if (!response.ok) {
           throw new Error("Failed to fetch AI insights");
         }
 
-        return response.json();
-      })
+        const data = await response.json();
 
-      .then((data) => {
         console.log(data);
 
         setPosts(data);
-
-        setIsLoading(false);
-      })
-
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
 
         setError("Something went wrong while loading data.");
-
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   // Sidebar tabs
